@@ -38,7 +38,37 @@ if __name__ == "__main__":
     print y
 
     t = np.arange(len(diff_price))
-    
+    mpl.rcParams['font.sans-serif'] = [u'SimHei']
+    mpl.rcParams['axes.unicode_minus'] = False
+    plt.figure(figsize=(10, 8), facecolor='w')
+
+    plt.subplot(421)
+    plt.plot(t, diff_price, 'r-')
+    plt.grid(True)
+    plt.title('涨跌幅')
+
+    plt.subplot(422)
+    plt.plot(t, volumn, 'g-')
+    plt.grid(True)
+    plt.title('交易量')
+
+    clrs = plt.cm.terrain(np.linspace(0, 0.8, n))
+    plt.subplot(423)
+    for i, clr in enumerate(clrs):
+        plt.plot(t, y[:, i], '-', color=clr, alpha=0.7)
+    plt.title('所有组分')
+
+    for i, clr in enumerate(clrs):
+        axes = plt.subplot(4, 2, i+4)
+        plt.plot(t, y[:, i], '-', color=clr)
+        plt.title('组分%d' % (i+1))
+        plt.grid(True)
+
+    plt.subtitle(u'SH600000股票: GaussianHMM分解隐变量', fontsize=18)
+    plt.tight_layout()
+    plt.subplots_adjust(top=0.9)
+    pl.show()
+
 
 
 
