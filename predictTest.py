@@ -67,7 +67,7 @@ if __name__ == "__main__":
     plt.subtitle(u'SH600000股票: GaussianHMM分解隐变量', fontsize=18)
     plt.tight_layout()
     plt.subplots_adjust(top=0.9)
-    pl.show()
+    plt.show()
 
 
 
